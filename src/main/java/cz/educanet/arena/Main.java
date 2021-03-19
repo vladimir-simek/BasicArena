@@ -2,8 +2,6 @@ package cz.educanet.arena;
 
 import cz.educanet.arena.presentation.ArenaCLI;
 
-import java.util.Random;
-
 /**
  * Main entry point
  */
