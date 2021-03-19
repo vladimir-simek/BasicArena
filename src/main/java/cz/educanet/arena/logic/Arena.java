@@ -10,7 +10,7 @@ public class Arena {
     /**
      * Represents the current round. This property is incremented each round.
      */
-    private int round;
+    private int round = 0;
 
     /**
      * Makes the gladiators fight one round.
@@ -19,6 +19,12 @@ public class Arena {
         // TODO:
         // Gladiator 1 should deal (random) damage to Gladiator 2
         // Gladiator 2 should deal (random) damage to Gladiator 1
+
+        gladiator1.dealDamage(gladiator2);
+        if (!gladiator2.isDead()){
+            gladiator2.dealDamage(gladiator1);
+        }
+        round++;
         throw new UnsupportedOperationException();
     }
 
@@ -26,8 +32,11 @@ public class Arena {
      * @return the winner, null if none.
      */
     public Gladiator getWinner() {
-        // TODO:
-        throw new UnsupportedOperationException();
+        if (gladiator1.isDead()){
+            return gladiator2;
+        } else if (gladiator2.isDead()) {
+            return gladiator1;
+        } else return null;
     }
 
     public void setGladiator1(Gladiator gladiator1) {
