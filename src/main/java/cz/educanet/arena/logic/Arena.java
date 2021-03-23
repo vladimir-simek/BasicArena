@@ -46,4 +46,12 @@ public class Arena {
     public void setGladiator2(Gladiator gladiator2) {
         this.gladiator2 = gladiator2;
     }
+
+    public Gladiator getGladiator1() {
+        return gladiator1;
+    }
+
+    public Gladiator getGladiator2() {
+        return gladiator2;
+    }
 }

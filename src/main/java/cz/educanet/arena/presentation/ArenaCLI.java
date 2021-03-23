@@ -20,11 +20,12 @@ public class ArenaCLI {
     }
 
     public void renderLandingPage() {
-        System.out.println("     /\\                         \n" +
-                "    /  \\   _ __ ___ _ __   __ _ \n" +
-                "   / /\\ \\ | '__/ _ \\ '_ \\ / _` |\n" +
-                "  / ____ \\| | |  __/ | | | (_| |\n" +
-                " /_/    \\_\\_|  \\___|_| |_|\\__,_|");
+        System.out.println("""
+                    /\\                        \s
+                   /  \\   _ __ ___ _ __   __ _\s
+                  / /\\ \\ | '__/ _ \\ '_ \\ / _` |
+                 / ____ \\| | |  __/ | | | (_| |
+                /_/    \\_\\_|  \\___|_| |_|\\__,_|""".indent(1));
         System.out.println("---------------------------------");
     }
 
@@ -50,6 +51,16 @@ public class ArenaCLI {
         while (logic.getWinner() == null) {
             logic.fight();
         }
+    }
+
+    public void renderGladiatorSaver() {
+        System.out.println("Save your fighter #1 (enter the path of the file where you want to save him):");
+        String gladiator1Path = sc.nextLine();
+        System.out.println("Save your fighter #2 (enter the path of the file where you want to save him):");
+        String gladiator2Path = sc.nextLine();
+
+        GladiatorDatabase.saveGladiator(gladiator1Path, logic.getGladiator1());
+        GladiatorDatabase.saveGladiator(gladiator2Path, logic.getGladiator2());
     }
 
 }

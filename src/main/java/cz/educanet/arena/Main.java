@@ -14,6 +14,8 @@ public class Main {
         cli.renderGladiatorPicker();
 
         cli.renderEntireFight();
+
+        cli.renderGladiatorSaver();
     }
 
 }
