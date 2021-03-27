@@ -13,6 +13,7 @@ public class Main {
         cli.renderLandingPage();
         cli.renderGladiatorPicker();
 
+
         cli.renderEntireFight();
 
         cli.renderGladiatorSaver();

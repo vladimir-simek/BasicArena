@@ -16,7 +16,7 @@ public class Gladiator {
 
     public void dealDamage(Gladiator enemy) {
         Random random = new Random();
-        int damage = random.nextInt(maxDMG-minDMG) + minDMG;
+        int damage = random.nextInt(Math.abs(maxDMG-minDMG)) + minDMG;
         int finalHealth = enemy.getHp() - damage;
         enemy.setHp(finalHealth);
     }

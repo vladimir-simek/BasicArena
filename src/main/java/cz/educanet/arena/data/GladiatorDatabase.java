@@ -16,8 +16,10 @@ public class GladiatorDatabase {
     public static Gladiator loadGladiator(String filename) {
         // TODO:
 
+        Gladiator newGladiator = new Gladiator();
+
         try {
-            Gladiator newGladiator = new Gladiator();
+
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
             String line = bufferedReader.readLine();
@@ -29,11 +31,11 @@ public class GladiatorDatabase {
             newGladiator.setMaxDMG(Integer.parseInt(variables[2]));
             newGladiator.setMinDMG(Integer.parseInt(variables[3]));
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        throw new UnsupportedOperationException();
+        return newGladiator;
     }
 
     /**
@@ -44,7 +46,13 @@ public class GladiatorDatabase {
     public static void saveGladiator(String filename, Gladiator gladiator) {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
-            bufferedWriter.write(gladiator.getName() + ";" + gladiator.getHp() + ";" + gladiator.getMaxDMG() + ";" + gladiator.getMinDMG() + ";");
+            bufferedWriter.write(gladiator.getName());
+            bufferedWriter.write(";");
+            bufferedWriter.write(gladiator.getHp() + "");
+            bufferedWriter.write(";");
+            bufferedWriter.write(gladiator.getMinDMG() + "");
+            bufferedWriter.write(";");
+            bufferedWriter.write(gladiator.getMaxDMG() + "");
             bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

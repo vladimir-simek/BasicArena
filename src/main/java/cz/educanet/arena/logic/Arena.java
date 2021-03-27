@@ -25,7 +25,10 @@ public class Arena {
             gladiator2.dealDamage(gladiator1);
         }
         round++;
-        throw new UnsupportedOperationException();
+    }
+
+    public int getRound() {
+        return round;
     }
 
     /**

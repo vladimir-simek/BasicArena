@@ -4,7 +4,6 @@ import cz.educanet.arena.data.GladiatorDatabase;
 import cz.educanet.arena.logic.Arena;
 import cz.educanet.arena.logic.Gladiator;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ArenaCLI {
@@ -32,7 +31,7 @@ public class ArenaCLI {
 
     public void renderGladiatorPicker() {
         System.out.println("Do you wish to create a new Gladiators or load already existing Gladiators?");
-        System.out.println("1/2");
+        /*System.out.println("1/2");
         String rawOption = sc.nextLine();
         int option = Integer.parseInt(rawOption);
 
@@ -65,9 +64,46 @@ public class ArenaCLI {
             gladiator1.setMinDMG(10);
             gladiator1.setMaxDMG(20);
 
-            System.out.println("Enter Gladiators number 1 name:");
+            System.out.println("Enter Gladiators number 2 name:");
+            Gladiator gladiator2 = new Gladiator();
+            gladiator2.setName(sc.nextLine());
+            gladiator2.setHp(100);
+            gladiator2.setMinDMG(10);
+            gladiator2.setMaxDMG(20);
 
+            renderGladiatorSaver();
+
+        }*/
+        System.out.println("Pick your fighter #1 (enter the path of the saved file):");
+        String gladiator1File = sc.nextLine();
+        System.out.println("Pick your fighter #2 (enter the path of the saved file):");
+        String gladiator2File = sc.nextLine();
+
+
+        Gladiator gladiator1 = GladiatorDatabase.loadGladiator(gladiator1File);
+        Gladiator gladiator2 = GladiatorDatabase.loadGladiator(gladiator2File);
+        logic.setGladiator1(gladiator1);
+        logic.setGladiator2(gladiator2);
+    }
+
+    public void renderHealthBar(Gladiator gladiator) {
+        int hp = gladiator.getHp();
+        int hpPercent = hp / 10;
+        if (hpPercent < 10) {
+            hpPercent = 10;
         }
+        System.out.print(gladiator.getName());
+        System.out.print("[");
+        for (int i = 0; i < hpPercent; i++) {
+            System.out.print("#");
+        }
+        if (hpPercent < 100) {
+            for (int i = 0; i < (10 - hpPercent); i++) {
+                System.out.print(" ");
+            }
+        }
+        System.out.print("]");
+        System.out.println("");
     }
 
     /**
@@ -78,6 +114,10 @@ public class ArenaCLI {
         // while(...) {logic.fight.... sout...}
 
         while (logic.getWinner() == null) {
+            int round = logic.getRound();
+            System.out.println("---------- " + round + ". round ---------");
+            renderHealthBar(logic.getGladiator1());
+            renderHealthBar(logic.getGladiator2());
             logic.fight();
         }
     }
