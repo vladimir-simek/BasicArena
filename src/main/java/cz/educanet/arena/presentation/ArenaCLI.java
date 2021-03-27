@@ -30,6 +30,9 @@ public class ArenaCLI {
     }
 
     public void renderGladiatorPicker() {
+        System.out.println("Do you wish to create a new Gladiator or load already existing one?");
+        System.out.println("1/2");
+        int option = sc.nextInt();
         System.out.println("Pick your fighter #1 (enter the path of the saved file):");
         String gladiator1File = sc.nextLine();
         System.out.println("Pick your fighter #2 (enter the path of the saved file):");
