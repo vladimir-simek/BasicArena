@@ -88,19 +88,20 @@ public class ArenaCLI {
 
     public void renderHealthBar(Gladiator gladiator) {
         int hp = gladiator.getHp();
-        int hpPercent = hp / 10;
-        if (hpPercent < 10) {
+        int hpPercent;
+        if (hp < 10 && hp > 0){
             hpPercent = 10;
         }
+
+        hpPercent = hp / 10;
+
         System.out.print(gladiator.getName());
         System.out.print("[");
         for (int i = 0; i < hpPercent; i++) {
             System.out.print("#");
         }
-        if (hpPercent < 100) {
-            for (int i = 0; i < (10 - hpPercent); i++) {
-                System.out.print(" ");
-            }
+        for (int i = 0; i < (10-hpPercent); i++) {
+            System.out.print(" ");
         }
         System.out.print("]");
         System.out.println("");
@@ -112,14 +113,19 @@ public class ArenaCLI {
     public void renderEntireFight() {
         // TODO:
         // while(...) {logic.fight.... sout...}
+        int round = 0;
 
         while (logic.getWinner() == null) {
-            int round = logic.getRound();
+            round = logic.getRound();
             System.out.println("---------- " + round + ". round ---------");
             renderHealthBar(logic.getGladiator1());
             renderHealthBar(logic.getGladiator2());
             logic.fight();
         }
+        round = logic.getRound();
+        System.out.println("---------- " + round + ". round ---------");
+        renderHealthBar(logic.getGladiator1());
+        renderHealthBar(logic.getGladiator2());
     }
 
     public void renderGladiatorSaver() {

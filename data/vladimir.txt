@@ -1,1 +1,1 @@
-Vladimir;19;10;20
+Vladimir;100;10;20
