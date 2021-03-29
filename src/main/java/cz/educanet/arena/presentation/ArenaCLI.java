@@ -113,7 +113,7 @@ public class ArenaCLI {
     public void renderEntireFight() {
         // TODO:
         // while(...) {logic.fight.... sout...}
-        int round = 0;
+        int round;
 
         while (logic.getWinner() == null) {
             round = logic.getRound();
@@ -121,11 +121,16 @@ public class ArenaCLI {
             renderHealthBar(logic.getGladiator1());
             renderHealthBar(logic.getGladiator2());
             logic.fight();
+            System.out.println(logic.getGladiator1().getName() + " dealt damage " + logic.getDmg1() + ".");
+            System.out.println(logic.getGladiator2().getName() + " dealt damage " + logic.getDmg2() + ".");
+
         }
         round = logic.getRound();
         System.out.println("---------- " + round + ". round ---------");
         renderHealthBar(logic.getGladiator1());
         renderHealthBar(logic.getGladiator2());
+        System.out.println(logic.getGladiator1().getName() + " dealt damage " + logic.getDmg1() + ".");
+        System.out.println(logic.getGladiator2().getName() + " dealt damage " + logic.getDmg2() + ".");
     }
 
     public void renderGladiatorSaver() {

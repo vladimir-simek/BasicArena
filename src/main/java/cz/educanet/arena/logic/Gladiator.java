@@ -14,11 +14,13 @@ public class Gladiator {
         return this.hp <= 0;
     }
 
-    public void dealDamage(Gladiator enemy) {
+    public int dealDamage(Gladiator enemy) {
         Random random = new Random();
         int damage = random.nextInt(Math.abs(maxDMG-minDMG)) + minDMG;
         int finalHealth = enemy.getHp() - damage;
         enemy.setHp(finalHealth);
+
+        return damage;
     }
 
     public String getName() {

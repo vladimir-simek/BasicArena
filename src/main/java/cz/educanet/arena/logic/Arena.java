@@ -9,6 +9,8 @@ public class Arena {
 
     private Gladiator gladiator1;
     private Gladiator gladiator2;
+    private int dmg1;
+    private int dmg2;
     /**
      * Represents the current round. This property is incremented each round.
      */
@@ -25,16 +27,24 @@ public class Arena {
         int randomNumber = random.nextInt();
 
         if (randomNumber % 2 == 0) {
-            gladiator1.dealDamage(gladiator2);
+            dmg1 = gladiator1.dealDamage(gladiator2);
             if (!gladiator2.isDead()) {
-                gladiator2.dealDamage(gladiator1);
+                dmg2 = gladiator2.dealDamage(gladiator1);
             }
         } else {
-            gladiator2.dealDamage(gladiator1);
+            dmg2 = gladiator2.dealDamage(gladiator1);
             if (!gladiator1.isDead()){
-                gladiator1.dealDamage(gladiator2);
+                dmg1 =gladiator1.dealDamage(gladiator2);
             }
         }
+
+        if (gladiator1.getHp() < 0) {
+            gladiator1.setHp(0);
+        }
+        if (gladiator2.getHp() < 0) {
+            gladiator2.setHp(0);
+        }
+        // Those will make sure that Hp is not less than 0
         round++;
     }
 
@@ -67,5 +77,13 @@ public class Arena {
 
     public Gladiator getGladiator2() {
         return gladiator2;
+    }
+
+    public int getDmg1(){
+        return dmg1;
+    }
+
+    public int getDmg2(){
+        return dmg2;
     }
 }
